@@ -1,0 +1,6 @@
+Name,Age,Class,Marks,Attendance,Extracurricular,Guardian,Result,Grade,Needs_Help,ExtraCode
+Kabir,14,8A,43.0,71.0,Yes,Parent1,Pass,D,Yes,1
+Meera,13,10A,44.0,60.0,Yes,Parent4,Pass,D,Yes,1
+Anika,14,10A,38.0,73.0,Yes,Parent4,Fail,F,Yes,1
+Nitya,16,10A,30.0,62.0,Yes,Parent1,Fail,F,Yes,1
+Aarohi,16,9B,37.0,60.0,Yes,Parent3,Fail,F,Yes,1

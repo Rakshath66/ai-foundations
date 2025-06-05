@@ -1,0 +1,6 @@
+Name,Age,Class,Marks,Attendance,Extracurricular,Guardian,Result,Grade,Needs_Help,ExtraCode
+Riya,15,8A,94.0,96.0,Yes,Parent3,Pass,A,No,1
+Krishna,15,10A,92.0,98.0,Yes,Parent4,Pass,A,No,1
+Myra,16,8A,91.0,82.0,No,Parent4,Pass,A,No,0
+Kiara,17,9B,89.0,81.0,No,Parent2,Pass,B,No,0
+Aadhya,13,9B,82.0,96.0,Yes,Parent4,Pass,B,No,1
