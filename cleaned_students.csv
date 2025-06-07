@@ -1,0 +1,4 @@
+Name,Age,JoinDate,Final Score,Performance,Department,DepartmentFull,Passed
+alice,25.0,2022-01-01,90.0,High,,Engineering,True
+charlie,30.0,,90.0,High,,Human Resources,True
+alice,25.0,2022-01-01,90.0,High,,Human Resources,True
