@@ -10,3 +10,6 @@ This notebook covers:
 ✅ Even numbers list  
 ✅ Set comprehension  
 ✅ Cubing with lambda  
+
+
+- seed value
