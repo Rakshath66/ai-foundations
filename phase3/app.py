@@ -20,9 +20,70 @@ client = OpenAI(base_url="https://openrouter.ai/api/v1", api_key=api_key)
 
 # Load embedding model
 model = SentenceTransformer("all-MiniLM-L6-v2")
+# import requests
+# try:
+#     res = requests.get("https://openrouter.ai")
+#     st.success(f"🌐 Internet: {res.status_code} - {res.reason}")
+# except Exception as e:
+#     st.error(f"❌ No internet access or DNS error: {e}")
 
-# Streamlit UI
-st.title("📄 Chat with Your PDF (RAG + Pinecone style)")
+# # Streamlit UI
+# st.title("📄 Chat with Your PDF (RAG + Pinecone style)")
+# st.markdown(
+#     """<h1 style='text-align: center;'>📄 Chat with Your PDF<br> (RAG + Pinecone style)</h1>""",unsafe_allow_html=True
+# )
+
+# st.markdown(
+#     """
+#     <div style="text-align: center; padding: 1rem 0;">
+#         <h1 style="font-size: 2.5rem;">📄 Chat with Your PDF</h1>
+#         <h3 style="color: gray; font-weight: normal;">(RAG + Pinecone style)</h3>
+#     </div>
+#     """,
+#     unsafe_allow_html=True
+# )
+
+st.markdown(
+    """
+    <h1 style="
+        background: linear-gradient(to right, red, orange, orange, red);
+        -webkit-background-clip: text;
+        color: transparent;
+        font-size: 3rem;
+        text-align: center;
+        padding: 1rem 0;
+    ">
+        📄 Chat with Your PDF
+    </h1>
+    
+    """,
+    unsafe_allow_html=True
+)
+# st.success(f"")
+# <h3 style="text-align:center; color: white; font-weight: normal;">
+#         (RAG + Pinecone style)
+#     </h3>
+
+
+st.markdown("""
+    <style>
+    div.stButton {
+        background: linear-gradient(to right, red, orange, orange, red);
+        color: white;
+        border: none;
+        padding: 0.6rem 1.2rem;
+        font-weight: bold;
+        border-radius: 12px;
+        transition: 0.2s;
+        margin-top: 10px;
+    }
+    div.stButton > button:hover {
+        transform: scale(1.03);
+        cursor: pointer;
+    }
+    </style>
+""", unsafe_allow_html=True)
+
 
 uploaded_file = st.file_uploader("Upload a PDF", type="pdf")
 
@@ -73,14 +134,45 @@ Answer:"""
         reply = response.choices[0].message.content
         st.session_state.chat_history.append({"role": "assistant", "content": reply})
         return reply
+    
 
-    # Input box
-    user_input = st.text_input("Ask a question about the PDF")
-    if user_input:
+        
+    with st.form(key="chat_form", clear_on_submit=True):
+        user_input = st.text_input("Ask a question about the PDF", disabled=not True)
+        submit = st.form_submit_button("📤 Send", use_container_width=True)
+
+    # Custom container with full CSS styling
+    # with st.container():
+    #     st.markdown('<div class="custom-box">', unsafe_allow_html=True)
+    #     user_input = st.text_input("Ask a question about the PDF")
+    #     submit = st.button("📤 Send", key="submit_button", use_container_width=True)
+    #     st.markdown('</div>', unsafe_allow_html=True)
+
+
+
+    if submit and user_input:
         with st.spinner("Thinking..."):
             answer = generate_answer(user_input)
-            st.markdown(f"**You:** {user_input}")
-            st.markdown(f"**Bot:** {answer}")
+            # Inject CSS for chat bubbles
+            
+            # Style chat with custom CSS
+            st.markdown("""
+            <style>
+                .user-msg {
+                    background: linear-gradient(to right, #ffe259, #ffa751);  /* Yellow-orange gradient */
+                    color: #000;
+                    padding: 12px 16px;
+                    border-radius: 12px;
+                    margin: 12px 0;
+                    font-weight: 500;
+                }
+            
+        """, unsafe_allow_html=True)
+
+        # Show chat messages with left-right separation
+        st.markdown(f'User: <div class="user-msg">{user_input}</div>', unsafe_allow_html=True)
+        st.markdown(f'Bot: <div class="bot-msg">{answer}</div>', unsafe_allow_html=True)
+
 
 
 # echo 'export PATH=$PATH:~/Library/Python/3.9/bin' >> ~/.zshrc
